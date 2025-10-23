@@ -1,5 +1,8 @@
 import pmdarima as pm
 from scripts.timing import timing
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
 
 @timing
 def learning_model(train_df, train_param='y', exogenous_param='ds'):
