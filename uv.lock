@@ -403,7 +403,6 @@ name = "time-series-analysis-3"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "numpy" },
     { name = "pandas" },
     { name = "plotly" },
     { name = "pmdarima" },
@@ -411,7 +410,6 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "numpy", specifier = ">=2.3.4" },
     { name = "pandas", specifier = ">=2.3.3" },
     { name = "plotly", specifier = ">=6.3.1" },
     { name = "pmdarima", specifier = ">=2.0.4" },
