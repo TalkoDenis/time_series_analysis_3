@@ -1,14 +1,22 @@
 import plotly.graph_objects as go
 
-def visualize_data(df_prophet, forecast):
+def visualize_data(train_df, forecast, future_df):
     fig = go.Figure()
 
     fig.add_trace(go.Scatter(
-        x=df_prophet['ds'],
-        y=df_prophet['y'],
+        x=train_df['ds'],
+        y=train_df['y'],
         mode='lines',
         line=dict(color='red', width=2),
-        name='Now'
+        name='Train data'
+    ))
+
+    fig.add_trace(go.Scatter(
+        x=future_df['ds'],
+        y=future_df['y'],
+        mode='lines',
+        line=dict(color='red', width=2),
+        name='Real data'
     ))
 
     fig.add_trace(go.Scatter(
