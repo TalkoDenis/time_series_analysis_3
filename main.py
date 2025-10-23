@@ -15,6 +15,7 @@ df_prophet = rename_columns(df)
 del df
 train_df, future_df = split_df(df_prophet)
 # @timing
-forecast = learning_model(train_df, train_param='y', exogenous_param='ds')
-visualize_data(train_df, forecast, future_df)
-print(future_df.head())
+forecast = 
+print(learning_model(train_df, train_param='y', exogenous_param='ds'))
+# visualize_data(train_df, forecast, future_df)
+# print(forecast.head())
