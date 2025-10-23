@@ -2,8 +2,8 @@ import pmdarima as pm
 
 def learning_model(train_df, train_param='y', exogenous_param='ds'):
     print("Start learning the model...")
-    SARIMAX_model = pm.auto_arima(train[[train_param]],
-                            exogenous=train[[exogenous_param]],
+    SARIMAX_model = pm.auto_arima(train_df[[train_param]],
+                            exogenous=train_df[[exogenous_param]],
                             start_p=1, start_q=1,
                             test='adf',
                             max_p=3, max_q=3, m=12,
@@ -13,5 +13,5 @@ def learning_model(train_df, train_param='y', exogenous_param='ds'):
                             error_action='ignore',
                             suppress_warnings=True,
                             stepwise=True)
-    print("The Model is learnd. Params:", SARIMAX_model.order, SARIMAX_model.seasonal_order)
+    print("The Model is learned. Params:", SARIMAX_model.order, SARIMAX_model.seasonal_order)
     return SARIMAX_model
