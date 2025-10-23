@@ -6,16 +6,17 @@ from scripts.split_df import split_df
 from scripts.validate_date import validate_data
 from scripts.validate_datetime import validate_datatime
 from scripts.visualize_data import visualize_data
-from scripts.timing import timing
+from scripts.get_forecast import get_forecast
 
-# @timing
+
 df = read_data('./data/data.csv')
 df = validate_data(df)
 df_prophet = rename_columns(df)
 del df
 train_df, future_df = split_df(df_prophet)
-# @timing
-forecast = 
-print(learning_model(train_df, train_param='y', exogenous_param='ds'))
-# visualize_data(train_df, forecast, future_df)
+
+learning_model(train_df, train_param='y', exogenous_param='ds')
+forecast_df = get_forecast
+
+visualize_data(forecast_df)
 # print(forecast.head())

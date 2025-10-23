@@ -1,5 +1,7 @@
 import pmdarima as pm
+from scripts.timing import timing
 
+@timing
 def learning_model(train_df, train_param='y', exogenous_param='ds'):
     print("Start learning the model...")
     SARIMAX_model = pm.auto_arima(train_df[[train_param]],

@@ -1,27 +1,27 @@
 import plotly.graph_objects as go
 
-def visualize_data(train_df, forecast, future_df):
+def visualize_data(forecast_df):
     fig = go.Figure()
 
     fig.add_trace(go.Scatter(
-        x=train_df['ds'],
-        y=train_df['y'],
+        x=forecast_df['ds'],
+        y=forecast_df['y'],
         mode='lines',
         line=dict(color='red', width=2),
         name='Train data'
     ))
 
     fig.add_trace(go.Scatter(
-        x=future_df['ds'],
-        y=future_df['y'],
+        x=forecast_df['ds'],
+        y=forecast_df['y'],
         mode='lines',
         line=dict(color='red', width=2),
         name='Real data'
     ))
 
     fig.add_trace(go.Scatter(
-        x=forecast['ds'],
-        y=forecast['yhat'],
+        x=forecast_df['ds'],
+        y=forecast_df['yhat'],
         mode='lines',
         line=dict(color='blue', width=2),
         name='Forecast'
@@ -29,7 +29,7 @@ def visualize_data(train_df, forecast, future_df):
 
     fig.add_trace(go.Scatter(
         x=forecast['ds'],
-        y=forecast['yhat_upper'],
+        y=forecast['max'],
         mode='lines',
         line=dict(width=0),
         fill='tonexty',
@@ -38,7 +38,7 @@ def visualize_data(train_df, forecast, future_df):
     ))
     fig.add_trace(go.Scatter(
         x=forecast['ds'],
-        y=forecast['yhat_lower'],
+        y=forecast['min'],
         mode='lines',
         line=dict(width=0),
         fill='tonexty',
