@@ -1,7 +1,7 @@
-.PHONY: clean install test lint lint-fix test test-coverage test-total
+.PHONY: clean install test lint lint-fix test test-coverage test-total format format-fix
 
 clean:
-	rm -rf dist/ build/ *.egg-info
+	rm -rf *.egg-info .pytest-cache/ .ruff-cache/ coverage.xml
 
 
 install:
@@ -9,11 +9,19 @@ install:
 
 
 lint:
-	uv run ruff check main.py
+	uv run ruff check .
 
 
 lint-fix:
-	uv run ruff check --fix
+	uv run ruff check --fix .
+
+
+format:
+	uv run ruff format --check .
+
+
+format-fix:
+	uv run ruff format .
 
 
 test:
