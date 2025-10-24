@@ -1,5 +1,6 @@
 import plotly.graph_objects as go
 
+
 def visualize_data(forecast_df, train_df):
     fig = go.Figure()
 

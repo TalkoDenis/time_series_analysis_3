@@ -1,6 +1,9 @@
-import pmdarima as pm
-from scripts.timing import timing
 import warnings
+
+import pmdarima as pm
+
+from scripts.timing import timing
+
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 

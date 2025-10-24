@@ -1,5 +1,6 @@
-from pandas.errors import OutOfBoundsDatetime
 import pandas as pd
+from pandas.errors import OutOfBoundsDatetime
+
 
 def validate_data(df):
     try:

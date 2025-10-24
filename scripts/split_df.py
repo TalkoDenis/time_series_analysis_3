@@ -1,5 +1,7 @@
 import pandas as pd
-from scripts.get_min_max_data import get_min_data, get_max_data 
+
+from scripts.get_min_max_data import get_max_data, get_min_data
+
 
 def split_df(df, data='2025-01-01'):
     if pd.to_datetime(data) < get_min_data(df):

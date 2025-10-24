@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def get_forecast(model, train_data, test_data):
     n_periods = len(test_data)
     forecast_exog = test_data[['ds']]
