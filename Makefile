@@ -1,4 +1,4 @@
-.PHONY: clean install test lint
+.PHONY: clean install test lint lint-fix test test-coverage
 
 clean:
 	rm -rf dist/ build/ *.egg-info
@@ -17,4 +17,8 @@ lint-fix:
 
 
 test:
-	uv run pytests
+	uv run pytest
+
+
+test-coverage:
+	uv run pytest --cov=scripts --cov-report=xml:coverage.xml
