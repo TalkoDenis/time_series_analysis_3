@@ -1,0 +1,40 @@
+name: Python CI
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v1
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: uv pip sync pyproject.toml
+
+      - name: Run linter (Ruff)
+        run: uv run ruff check .
+
+      - name: Run tests with coverage
+        run: uv run pytest --cov=scripts --cov-report=xml:coverage.xml
+
+      # - name: Upload coverage reports to Codecov
+      #   uses: codecov/codecov-action@v4
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }} 
+      #     fail_ci_if_error: true 
