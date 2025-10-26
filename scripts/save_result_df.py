@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def save_result_df(future_df, forecast):
     results_df_org = pd.merge(
         future_df, forecast[["ds", "yhat", "yhat_lower", "yhat_upper"]], on="ds"
