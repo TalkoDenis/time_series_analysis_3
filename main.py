@@ -3,10 +3,9 @@ from scripts.learning_model import learning_model
 from scripts.read_data import read_data
 from scripts.rename_columns import rename_columns
 from scripts.split_df import split_df
-from scripts.visualize_data import visualize_data
-from scripts.validate_structure import validate_structure
 from scripts.validate_content import validate_content
-
+from scripts.validate_structure import validate_structure
+from scripts.visualize_data import visualize_data
 
 df = read_data("./data/data.csv")
 df = validate_structure(df)

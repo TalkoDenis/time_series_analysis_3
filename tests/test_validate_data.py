@@ -1,6 +1,5 @@
 import pandas as pd
 import pytest
-
 from scripts.validate_date import validate_data
 
 

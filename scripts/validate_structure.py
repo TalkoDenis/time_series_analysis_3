@@ -4,7 +4,8 @@ def validate_structure(df):
 
     if len(df.columns) < 2:
         raise Exception(
-            f"DataFrame is not valid! Expected at least 2 columns, got {len(df.columns)}"
+            f"""DataFrame is not valid!
+            Expected at least 2 columns, got {len(df.columns)}"""
         )
-    
+
     return df
