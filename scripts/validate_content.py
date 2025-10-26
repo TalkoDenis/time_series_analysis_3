@@ -9,7 +9,7 @@ def validate_content(df):
         raise Exception(f"Invalid data in date column ('ds'): {e}")
 
     try:
-        df["y"] = pd.to_numeric(df["y"])
+        df["y"] = pd.to_numeric(df["y"], downcast="unsigned")
     except Exception as e:
         print("ERROR: Failed to convert 'y' column to numeric.")
         raise Exception(f"Invalid data in value column ('y'): {e}")
