@@ -1,4 +1,4 @@
-.PHONY: clean install test lint lint-fix test test-coverage test-total format format-fix
+.PHONY: clean install test lint lint-fix test test-coverage test-total format format-fix show-resourses
 
 clean:
 	rm -rf *.egg-info .pytest-cache/ .ruff-cache/ coverage.xml
@@ -34,3 +34,7 @@ test-coverage:
 
 test-total:
 	uv run pytest --cov=scripts
+
+
+show-resourses:
+	uv run scalene --html --outfile profile.html main.py 
