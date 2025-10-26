@@ -8,8 +8,8 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 
 @timing
-def learning_model(train_df, train_param="y", exogenous_param="ds"):
-    print("Start learning the model...")
+def learning_sarimax_model(train_df, train_param="y", exogenous_param="ds"):
+    print("Start learning the SARIMAX model...")
     SARIMAX_model = pm.auto_arima(
         train_df[[train_param]],
         exogenous=train_df[[exogenous_param]],
