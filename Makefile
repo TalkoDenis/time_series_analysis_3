@@ -1,4 +1,4 @@
-.PHONY: clean install test lint lint-fix test test-coverage test-total format format-fix show-resourses start-project
+.PHONY: clean install test lint lint-fix test test-coverage test-total format format-fix show-resourses start-project mypy
 
 clean:
 	rm -rf *.egg-info .pytest-cache/ .ruff-cache/ coverage.xml
@@ -42,3 +42,7 @@ show-resourses:
 
 start-project:
 	uv run main.py
+
+
+mypy:
+	uv run mypy .
