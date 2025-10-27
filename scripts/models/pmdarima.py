@@ -9,10 +9,8 @@ class PmdarimaWrapper(BaseModel):
     def fit(self, train_df: pd.DataFrame, y_col: str = 'y', exog_col: str = 'ds'):
         print("Starting pmdarima auto_arima...")
         
-        # Получаем 'm' из параметров, по умолчанию 12
         m = self.params.get('m', 12) 
         
-        # Сюда переносим код из твоего learning_model.py
         self.model = pm.auto_arima(
             train_df[[y_col]],
             exogenous=train_df[[exog_col]],
@@ -32,7 +30,6 @@ class PmdarimaWrapper(BaseModel):
     def predict(self, test_df: pd.DataFrame, exog_col: str = 'ds') -> pd.DataFrame:
         print("Generating pmdarima forecast...")
         
-        # Сюда переносим код из твоего get_forecast.py
         n_periods = len(test_df)
         exogenous_data = test_df[[exog_col]]
         
@@ -42,7 +39,6 @@ class PmdarimaWrapper(BaseModel):
             return_conf_int=True
         )
         
-        # Собираем DataFrame
         result_df = test_df.copy()
         result_df['Forecust_data'] = fitted
         result_df['min'] = confint[:, 0]

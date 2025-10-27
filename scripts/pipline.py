@@ -13,16 +13,15 @@ from .data_loader import (
 )
 from .visualize import visualize_data
 
-# "Фабрика" моделей. Здесь ты регистрируешь все свои модели.
+# Here are my models
 MODEL_CATALOG = {
     "sarimax": PmdarimaWrapper,
-    # "prophet": ProphetWrapper, # (когда добавишь)
+    "prophet": ProphetWrapper,
 }
 
 class ForecastPipeline:
     """
-    Главный класс-оркестратор. 
-    Хранит состояние (данные) и управляет моделями.
+    The main class
     """
     def __init__(self, path: str):
         self.path = path
@@ -30,12 +29,12 @@ class ForecastPipeline:
         self.clean_df = None
         self.train_df = None
         self.test_df = None
-        self.model: BaseModel = None # Подсказка типа
+        self.model: BaseModel = None
         self.forecast_df = None
 
     def prepare_data(self, split_date: str = '2025-01-01'):
         """
-        Выполняет всю цепочку подготовки данных.
+        Preparing data
         """
         print(f"Loading data from {self.path}...")
         self.raw_df = read_data(self.path)
@@ -45,23 +44,23 @@ class ForecastPipeline:
         
         self.train_df, self.test_df = split_df(self.clean_df, data=split_date)
         print("Data prepared.")
-        return self # Возвращаем self для "цепочки" вызовов
+        return self
 
     def set_model(self, model_name: str, **params):
         """
-        Выбирает и инициализирует модель из каталога.
+        Get a model from MODEL_CATALOG
         """
         ModelClass = MODEL_CATALOG.get(model_name.lower())
         if not ModelClass:
             raise ValueError(f"Model '{model_name}' not found. Available: {list(MODEL_CATALOG.keys())}")
         
-        # Создаем ОБЪЕКТ модели с ее гиперпараметрами
+        # Creating the model's object
         self.model = ModelClass(**params) 
         print(f"Model set to '{model_name}' with params {params}.")
         return self
 
     def fit(self):
-        """Обучает выбранную модель."""
+        """Fit a model"""
         if self.model is None:
             raise Exception("No model set. Call .set_model() first.")
         if self.train_df is None:
@@ -71,7 +70,7 @@ class ForecastPipeline:
         return self
 
     def predict(self):
-        """Генерирует прогноз."""
+        """Making forecast"""
         if self.model is None or self.model.model is None:
             raise Exception("Model not fitted. Call .fit() first.")
             
@@ -80,9 +79,9 @@ class ForecastPipeline:
         return self
 
     def visualize(self):
-        """Показывает график."""
+        """Show vizualization"""
         visualize_data(self.forecast_df, self.train_df)
         
     def get_forecast(self) -> pd.DataFrame:
-        """Возвращает итоговый DataFrame с прогнозом."""
+        """Return df with forecast"""
         return self.forecast_df
