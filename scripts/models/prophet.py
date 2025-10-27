@@ -1,14 +1,14 @@
-from prophet import Prophet
-from scripts.is_valid_country_name import is_valid_country_name
-from scripts.is_valid_seasonality_prior_scale import is_valid_seasonality_prior_scale
 import pandas as pd
+from prophet import Prophet
+
 from .base_model import BaseModel
+
 
 class ProphetWrapper(BaseModel):
     """
     It's BaseModel for prophet
     """
-    def fit(self, train_df: pd.DataFrame, y_col: str = 'y', exog_col: str = 'ds', seasonality_prior_scale: float=25.0, country_name:str='US'):
+    def fit(self, train_df: pd.DataFrame, y_col: str = 'y', exog_col: str = 'ds', seasonality_prior_scale: float = 25.0, country_name: str = 'US'):
         print("Starting prophet model...") 
         
         self.model = Prophet(

@@ -1,6 +1,8 @@
-import pmdarima as pm
 import pandas as pd
+import pmdarima as pm
+
 from .base_model import BaseModel
+
 
 class PmdarimaWrapper(BaseModel):
     """

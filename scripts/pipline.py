@@ -1,16 +1,16 @@
 import pandas as pd
-from .models.base_model import BaseModel
-from .models.pmdarima import PmdarimaWrapper
-from .models.prophet import ProphetWrapper 
 
 # Functions for data: load, clean etc.
 from .data_loader import (
-    read_data, 
-    validate_structure, 
-    rename_columns, 
-    validate_content, 
-    split_df
+    read_data,
+    rename_columns,
+    split_df,
+    validate_content,
+    validate_structure,
 )
+from .models.base_model import BaseModel
+from .models.pmdarima import PmdarimaWrapper
+from .models.prophet import ProphetWrapper
 from .visualize import visualize_data
 
 # Here are my models
@@ -18,6 +18,7 @@ MODEL_CATALOG = {
     "sarimax": PmdarimaWrapper,
     "prophet": ProphetWrapper,
 }
+
 
 class ForecastPipeline:
     """

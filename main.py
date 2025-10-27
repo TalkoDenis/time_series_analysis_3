@@ -6,7 +6,6 @@ from scripts.split_df import split_df
 from scripts.validate_content import validate_content
 from scripts.validate_structure import validate_structure
 from scripts.visualize_data import visualize_data
-from scripts.learning_prophet_model import learning_prophet_model
 
 df = read_data("./data/data.csv")
 df = validate_structure(df)

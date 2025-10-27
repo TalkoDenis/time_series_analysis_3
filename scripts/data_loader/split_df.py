@@ -1,5 +1,4 @@
 import pandas as pd
-
 from scripts.get_min_max_data import get_max_data, get_min_data
 
 
