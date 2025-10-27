@@ -3,7 +3,7 @@ from .models.base_model import BaseModel
 from .models.pmdarima import PmdarimaWrapper
 from .models.prophet import ProphetWrapper 
 
-# Импортируй свои функции подготовки данных
+# Functions for data: load, clean etc.
 from .data_loader import (
     read_data, 
     validate_structure, 
