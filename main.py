@@ -1,20 +1,36 @@
-from scripts.get_forecast import get_forecast
-from scripts.learning_sarimax_model import learning_sarimax_model
-from scripts.read_data import read_data
-from scripts.rename_columns import rename_columns
-from scripts.split_df import split_df
-from scripts.validate_content import validate_content
-from scripts.validate_structure import validate_structure
-from scripts.visualize_data import visualize_data
+try:
+    import stat_project as sp
+except ImportError:
+    print("Cannot find 'stat_project'.")
+    exit(1)
 
-df = read_data("./data/data.csv")
-df = validate_structure(df)
-df_prophet = rename_columns(df)
-del df
-df_prophet = validate_content(df_prophet)
-train_df, test_df = split_df(df_prophet)
 
-model = learning_sarimax_model(train_df, train_param="y", exogenous_param="ds")
-forecast_df = get_forecast(model, train_df, test_df)
+def main():
+    """
+    Test
+    """
+    print("Pipline inicialization")
+    pipe = sp.ForecastPipeline(path="./data/data.csv")
 
-visualize_data(forecast_df, train_df)
+    try:
+        print("Start")
+        pipe.prepare_data(split_date="2025-01-01")
+        
+        print("Learning model(sarimax)")
+        pipe.set_model("sarimax", m=12)
+        pipe.fit()
+        
+        pipe.predict()
+
+        pipe.visualize()
+        
+        print("First 5 strings")
+        forecast = pipe.get_forecast()
+        print(forecast.head())
+
+    except Exception as e:
+        print(f"Exception: {e}")
+
+
+if name == "__main__":
+    main()

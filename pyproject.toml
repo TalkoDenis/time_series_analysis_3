@@ -1,8 +1,10 @@
 [project]
-name = "time-series-analysis-3"
+name = "stat_project"
 version = "0.1.1"
 description = "My project for stat data"
-author="Talko Denis"
+authors=[
+    {name="Talko Denis", email="talko.denis.andreevich@gmail.com"}
+    ]
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
