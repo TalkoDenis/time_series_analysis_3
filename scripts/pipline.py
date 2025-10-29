@@ -24,6 +24,7 @@ class ForecastPipeline:
     """
     The main class
     """
+
     def __init__(self, path: str):
         self.path = path
         self.raw_df = None
@@ -33,7 +34,7 @@ class ForecastPipeline:
         self.model: BaseModel = None
         self.forecast_df = None
 
-    def prepare_data(self, split_date: str = '2025-01-01'):
+    def prepare_data(self, split_date: str = "2025-01-01"):
         """
         Preparing data
         """
@@ -42,7 +43,7 @@ class ForecastPipeline:
         df_struct = validate_structure(self.raw_df)
         df_renamed = rename_columns(df_struct)
         self.clean_df = validate_content(df_renamed)
-        
+
         self.train_df, self.test_df = split_df(self.clean_df, data=split_date)
         print("Data prepared.")
         return self
@@ -55,9 +56,9 @@ class ForecastPipeline:
         if not ModelClass:
             raise ValueError(f"""Model '{model_name}' not found.
                             Available: {list(MODEL_CATALOG.keys())}""")
-        
+
         # Creating the model's object
-        self.model = ModelClass(**params) 
+        self.model = ModelClass(**params)
         print(f"Model set to '{model_name}' with params {params}.")
         return self
 
@@ -67,7 +68,7 @@ class ForecastPipeline:
             raise Exception("No model set. Call .set_model() first.")
         if self.train_df is None:
             raise Exception("Data not prepared. Call .prepare_data() first.")
-            
+
         self.model.fit(self.train_df)
         return self
 
@@ -75,7 +76,7 @@ class ForecastPipeline:
         """Making forecast"""
         if self.model is None or self.model.model is None:
             raise Exception("Model not fitted. Call .fit() first.")
-            
+
         self.forecast_df = self.model.predict(self.test_df)
         print("Forecast generated.")
         return self
@@ -83,7 +84,7 @@ class ForecastPipeline:
     def visualize(self):
         """Show vizualization"""
         visualize_data(self.forecast_df, self.train_df)
-        
+
     def get_forecast(self) -> pd.DataFrame:
         """Return df with forecast"""
         return self.forecast_df
