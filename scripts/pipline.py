@@ -53,7 +53,8 @@ class ForecastPipeline:
         """
         ModelClass = MODEL_CATALOG.get(model_name.lower())
         if not ModelClass:
-            raise ValueError(f"Model '{model_name}' not found. Available: {list(MODEL_CATALOG.keys())}")
+            raise ValueError(f"""Model '{model_name}' not found.
+                            Available: {list(MODEL_CATALOG.keys())}""")
         
         # Creating the model's object
         self.model = ModelClass(**params) 

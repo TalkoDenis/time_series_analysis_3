@@ -15,14 +15,19 @@ class BaseModel(ABC):
         self.model = None
 
     @abstractmethod
-    def fit(self, train_df: pd.DataFrame, y_col: str = 'y', exog_col: str = 'ds'):
+    def fit(self,
+            train_df: pd.DataFrame,
+            y_col: str = 'y',
+            exog_col: str = 'ds'):
         """
         It learns a model
         """
         pass
 
     @abstractmethod
-    def predict(self, test_df: pd.DataFrame, exog_col: str = 'ds') -> pd.DataFrame:
+    def predict(self,
+                test_df: pd.DataFrame,
+                exog_col: str = 'ds') -> pd.DataFrame:
         """
         It makes predict
         """

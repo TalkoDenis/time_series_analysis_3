@@ -1,6 +1,7 @@
 import pandas as pd
 
-def validate_structure(df:pd.DataFrame) -> pd.DataFrame:
+
+def validate_structure(df: pd.DataFrame) -> pd.DataFrame:
     if df.empty:
         raise Exception("DataFrame is empty! No data found.")
 

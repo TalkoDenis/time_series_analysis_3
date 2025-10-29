@@ -2,7 +2,8 @@ import pandas as pd
 import plotly.graph_objects as go
 
 
-def visualize_data(forecast_df:pd.DataFrame, train_df:pd.DataFrame) -> None:
+def visualize_data(forecast_df: pd.DataFrame, train_df: pd.DataFrame) -> None:
+    
     fig = go.Figure()
 
     fig.add_trace(
