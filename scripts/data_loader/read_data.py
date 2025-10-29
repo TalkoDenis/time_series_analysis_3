@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def read_data(path):
+def read_data(path:str) -> pd.DataFrame:
     try:
         df = pd.read_csv(path)
     except FileNotFoundError:

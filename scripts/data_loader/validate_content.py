@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def validate_content(df):
+def validate_content(df:pd.DataFrame) -> pd.DataFrame:
     try:
         df["ds"] = pd.to_datetime(df["ds"])
     except Exception as e:
