@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "stat_project"
 version = "0.1.1"
@@ -7,18 +11,26 @@ authors=[
     ]
 readme = "README.md"
 requires-python = ">=3.12"
+
 dependencies = [
     "pandas>=2.3.3",
     "plotly>=6.3.1",
     "pmdarima>=2.0.4",
     "numpy<2.0",
+    "prophet>=1.2.1"
+]
+
+[project.optional-dependencies]
+dev = [
     "ruff>=0.14.2",
     "pytest>=8.4.2",
     "pytest-cov>=7.0.0",
     "pytest-mock>=3.15.1",
     "scalene>=1.5.55",
-    "prophet>=1.2.1",
     "mypy>=1.18.2",
+    "typer>=0.12.5",
+    "build",
+    "twine"
 ]
 
 [tool.pytest.ini_options]
