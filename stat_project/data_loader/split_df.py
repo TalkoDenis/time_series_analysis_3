@@ -1,5 +1,5 @@
 import pandas as pd
-from scripts.data_loader.get_min_max_data import get_max_data, get_min_data
+from .get_min_max_data import get_max_data, get_min_data
 
 
 def split_df_get_train(

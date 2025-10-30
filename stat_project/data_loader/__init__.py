@@ -5,7 +5,7 @@ from .validate_content import validate_content
 from .validate_structure import validate_structure
 
 
-all = [
+__all__ = [
     "read_data", 
     "rename_columns", 
     "split_df", 

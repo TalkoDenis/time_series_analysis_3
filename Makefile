@@ -1,4 +1,4 @@
-.PHONY: clean install test lint lint-fix test test-coverage test-total format format-fix show-resourses start-project mypy
+.PHONY: clean install test lint lint-fix test test-coverage test-total format format-fix show-resourses start-project mypy e-start run-main
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} +
@@ -37,3 +37,10 @@ start-project:
 
 mypy:
 	uv run mypy stat_project
+
+e-start:
+	uv pip install -e .
+
+
+run-main:
+	uv run python main.py

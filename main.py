@@ -1,7 +1,8 @@
 try:
     import stat_project as sp
-except ImportError:
+except ImportError as e:
     print("Cannot find 'stat_project'.")
+    raise e
     exit(1)
 
 
@@ -32,5 +33,5 @@ def main():
         print(f"Exception: {e}")
 
 
-if name == "__main__":
+if __name__ == "__main__":
     main()
