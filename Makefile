@@ -38,6 +38,7 @@ start-project:
 mypy:
 	uv run mypy stat_project
 
+
 e-start:
 	uv pip install -e .
 
