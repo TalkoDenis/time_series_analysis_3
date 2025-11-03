@@ -1,8 +1,8 @@
 import pandas as pd
 import pytest
 from pandas.testing import assert_frame_equal
-from scripts.validate_content import validate_content
-from scripts.validate_structure import validate_structure
+from stat_project.data_loader.validate_content import validate_content
+from stat_project.data_loader.validate_structure import validate_structure
 
 
 def test_validate_structure_success(sample_raw_df):

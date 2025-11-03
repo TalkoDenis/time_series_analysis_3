@@ -5,7 +5,7 @@ clean:
 	rm -rf *.egg-info .pytest_cache/ .ruff_cache/ coverage.xml htmlcov/ profile.html build/ dist/
 
 install:
-	uv pip sync --extra dev pyproject.toml
+	uv pip install .[dev]
 
 lint:
 	uv run ruff check .

@@ -1,5 +1,5 @@
 import pandas as pd
-from scripts.split_df import split_df
+from stat_project.data_loader.split_df import split_df
 
 
 def test_split_df(sample_prophet_df):
