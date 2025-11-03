@@ -27,12 +27,12 @@ class ForecastPipeline:
 
     def __init__(self, path: str):
         self.path = path
-        self.raw_df = None
-        self.clean_df = None
-        self.train_df = None
-        self.test_df = None
-        self.model: BaseModel = None
-        self.forecast_df = None
+        self.raw_df: pd.DataFrame | None = None
+        self.clean_df: pd.DataFrame | None = None
+        self.train_df: pd.DataFrame | None = None
+        self.test_df: pd.DataFrame | None = None
+        self.model: BaseModel | None = None
+        self.forecast_df: pd.DataFrame | None = None
 
     def prepare_data(self, split_date: str = "2025-01-01"):
         """
@@ -85,6 +85,6 @@ class ForecastPipeline:
         """Show vizualization"""
         visualize_data(self.forecast_df, self.train_df)
 
-    def get_forecast(self) -> pd.DataFrame:
+    def get_forecast(self) -> pd.DataFrame | None:
         """Return df with forecast"""
         return self.forecast_df
