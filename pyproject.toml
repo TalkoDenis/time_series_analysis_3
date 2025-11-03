@@ -43,7 +43,7 @@ pythonpath = ["."]
 module = [
     "prophet",
     "pmdarima",
-    "plptly",
-    "plptly.graph_objects"
+    "plotly",
+    "plotly.graph_objects"
 ]
 ignore_missing_imports = true
