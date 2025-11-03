@@ -1,5 +1,6 @@
 import pandas as pd
 from pandas.testing import assert_frame_equal
+
 from stat_project.data_loader.rename_columns import rename_columns
 
 

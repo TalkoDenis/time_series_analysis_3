@@ -1,6 +1,7 @@
 import pandas as pd
 import pytest
 from pandas.testing import assert_frame_equal
+
 from stat_project.data_loader.validate_content import validate_content
 from stat_project.data_loader.validate_structure import validate_structure
 
