@@ -26,7 +26,6 @@ test-coverage:
 	uv run pytest --cov=stat_project --cov-report=xml:coverage.xml
 
 test-total:
-
 	uv run pytest --cov=stat_project
 
 show-resourses:
