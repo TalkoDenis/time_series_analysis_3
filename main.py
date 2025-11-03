@@ -16,15 +16,15 @@ def main():
     try:
         print("Start")
         pipe.prepare_data(split_date="2025-01-01")
-        
+
         print("Learning model(sarimax)")
         pipe.set_model("sarimax", m=12)
         pipe.fit()
-        
+
         pipe.predict()
 
         pipe.visualize()
-        
+
         print("First 5 strings")
         forecast = pipe.get_forecast()
         print(forecast.head())
